@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 5.0f;
     private float VerticalVelocity = 0.0f;
     private float gravity = 12.0f;
+    public int score = 0;
 
     void Start()
     {
@@ -38,6 +40,10 @@ public class PlayerController : MonoBehaviour
     {
         speed = 5.0f + modifier;
     }
-
+    public void AddScore(int value)
+    {
+        score += value;
+        UnityEngine.Debug.Log("Score: " + score); // Можно добавить вывод текущего количества очков в консоль или интерфейс игры
+    }
 
 }

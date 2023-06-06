@@ -1,27 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
-using Vaneftec.Game.Common.Controller;
 
+public class ScoreTextController : MonoBehaviour
+{
+    public int score = 0;
+    public Text scoreText; // Ссылка на текстовый элемент
 
-public class ScoreTextController : GameController {
+    // Вызывается при подборе предмета, чтобы добавить очки
+    public void AddScore(int value)
+    {
+        score += value;
+        UpdateScoreText();
+    }
 
-	private Text text;
-	private String defaultScoreText;
-
-
-	void Start() {
-		scoreManager.Register(UpdateDisplayedScore);
-		gameContext.StartLevel();
-
-		text = GetComponent<Text>();
-		defaultScoreText = text.text;
-		UpdateDisplayedScore(scoreManager.GetScore());
-	}
-
-
-	private void UpdateDisplayedScore(int score) {
-		text.text = String.Format(defaultScoreText, score);
-	}
+    // Обновляет текстовый элемент с текущим количеством очков
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
 }
-
